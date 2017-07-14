@@ -1,7 +1,7 @@
 # Download or update and install various tools
 
 # Global prefix
-PREFIX = $(PWD)/test
+PREFIX = $(HOME)/local
 DOWNLOADS = $(PWD)/downloads
 
 include src/tmux.mk
