@@ -1,12 +1,5 @@
 # Download or update and install tmux
 
-# Install prefix
-PREFIX = $(PWD)/test
-
-# Download directory
-DOWNLOADS = $(PWD)/downloads
-
-# URL of the libevent tarball
 NCURSES_URL = ftp://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz
 NCURSES_TARGET = $(PREFIX)/lib/libncurses.a
 
@@ -84,5 +77,4 @@ tmux-update: tmux-clean tmux-git/autogen.sh
 tmux-reset: tmux-clean tmux-git/autogen.sh
 	cd tmux-git && git reset --hard origin/HEAD~
 	$(MAKE) $(TMUX_TARGET)
-
 
