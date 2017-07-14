@@ -1,6 +1,6 @@
 # Download or update and install various tools
 
-# Global prefix
+# Global prefix and directories
 PREFIX = $(HOME)/local
 DOWNLOADS = $(PWD)/downloads
 

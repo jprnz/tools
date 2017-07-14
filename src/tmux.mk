@@ -1,11 +1,10 @@
-# Download or update and install tmux
-
+# URL for ncurses
 NCURSES_URL = ftp://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz
 NCURSES_TARGET = $(PREFIX)/lib/libncurses.a
 
-# URL of the libevent tarball
+# URL of libevent
 LIBEVENT_URL = https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
-LIBEVENT_TARGET = $(PREFIX)/lib/libevent.so
+LIBEVENT_TARGET = $(PREFIX)/lib/libevent.a
 
 # Git repository URL for tmux
 TMUX_GIT = https://github.com/tmux/tmux.git
@@ -72,7 +71,7 @@ tmux-update: tmux-clean tmux-git/autogen.sh
 	cd tmux-git && git fetch origin
 	cd tmux-git && git reset --hard origin/master
 	$(MAKE) $(TMUX_TARGET)
-	
+
 .PHONY: tmux-reset
 tmux-reset: tmux-clean tmux-git/autogen.sh
 	cd tmux-git && git reset --hard origin/HEAD~
