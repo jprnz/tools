@@ -4,7 +4,6 @@ When available, tools are built from latest commit of their source repository.
 Assumes a fully stocked build environment.
 
 # Running
-
 ```
 make <tool>-install # To install a specific tool
 make                # To install all tools
@@ -24,5 +23,20 @@ make <tool>-reset   # Checks out HEAD~ and re-compiles
 
 # Organization
 Makefiles for all tools are located in `src/<tool>.mk`. 
+
+# Notes
+## Pip executable
+In order to provide the python client library for neovim the variables
+`PIP2` and `PIP3` must be defined. By default these are:
+``` Makefile
+PIP2 = pip2.7
+PIP3 = pip3.6
+```
+
+To change these at runtime use
+``` Makefile
+make PIP2=<executable> PIP3=<executable>
+```
+
 
 
