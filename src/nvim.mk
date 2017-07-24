@@ -11,7 +11,7 @@ PY3NVIM_TARGET = $(wildcard $(PREFIX)/lib/python3*/site-packages/neovim)
 NVIM_GIT = https://github.com/neovim/neovim.git
 NVIM_DIR = nvim-git
 NVIM_TARGET = $(PREFIX)/bin/nvim
-NVIM_DEPS = $(AUTOCONF_TARGET) $(PY2NVIM_TARGET) $(PY3NVIM_TARGET)
+NVIM_DEPS = $(AUTOCONF_TARGET) #$(PY2NVIM_TARGET) $(PY3NVIM_TARGET)
 
 # -- Install
 .PHONY: nvim-install
@@ -33,16 +33,16 @@ $(AUTOCONF_DIR)/Makefile: $(AUTOCONF_DIR)/configure
 $(AUTOCONF_TARGET): $(AUTOCONF_DIR)/Makefile
 	cd $(AUTOCONF_DIR) && $(MAKE)
 
-# -- python client
-$(PY2NVIM_TARGET):
-	export PYTHONUSERBASE=$(PREFIX) && \
-		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
-		$(PIP2) install -U neovim --user
-
-$(PY3NVIM_TARGET):
-	export PYTHONUSERBASE=$(PREFIX) && \
-		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
-		$(PIP3) install -U neovim --user
+## -- python client
+#$(PY2NVIM_TARGET):
+#	export PYTHONUSERBASE=$(PREFIX) && \
+#		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
+#		$(PIP2) install -U neovim --user
+#
+#$(PY3NVIM_TARGET):
+#	export PYTHONUSERBASE=$(PREFIX) && \
+#		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
+#		$(PIP3) install -U neovim --user
 
 # -- nvim
 $(NVIM_DIR)/Makefile:
@@ -51,7 +51,7 @@ $(NVIM_DIR)/Makefile:
 $(NVIM_DIR)/build/bin/nvim: $(NVIM_DIR)/Makefile $(NVIM_DEPS)
 	export PATH="$(AUTOCONF_DIR)/bin:$(PATH)" && \
 		cd $(NVIM_DIR) && \
-		$(MAKE) -j1 \
+		$(MAKE) \
 			MAKE_BUILD_TYPE=Release \
 			CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$(PREFIX)"
 	  touch $@
