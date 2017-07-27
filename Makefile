@@ -4,12 +4,8 @@
 PREFIX = $(HOME)/local
 DOWNLOADS = $(PWD)/downloads
 
-# Required for python neovim client
-PIP2 = pip2.7
-PIP3 = pip3.6
-
 .PHONY: all
-all: nvim-install tmux-install
+all: tmux-install
 
 .PHONY: clean
 clean:

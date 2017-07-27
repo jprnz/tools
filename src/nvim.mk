@@ -1,11 +1,13 @@
+# Required for python neovim client
+PIP = pip3.6
+
 # Autotools 
 AUTOCONF_URL = https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
 AUTOCONF_DIR = autoconf
 AUTOCONF_TARGET = $(AUTOCONF_DIR)/bin/autoconf
 
 # Nvim python client
-PY2NVIM_TARGET = $(wildcard $(PREFIX)/lib/python2*/site-packages/neovim)
-PY3NVIM_TARGET = $(wildcard $(PREFIX)/lib/python3*/site-packages/neovim)
+PYNVIM_TARGET = $(wildcard $(PREFIX)/lib/python*/site-packages/neovim)
 
 # Git repository URL for nvim
 NVIM_GIT = https://github.com/neovim/neovim.git
@@ -33,16 +35,11 @@ $(AUTOCONF_DIR)/Makefile: $(AUTOCONF_DIR)/configure
 $(AUTOCONF_TARGET): $(AUTOCONF_DIR)/Makefile
 	cd $(AUTOCONF_DIR) && $(MAKE)
 
-## -- python client
-#$(PY2NVIM_TARGET):
-#	export PYTHONUSERBASE=$(PREFIX) && \
-#		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
-#		$(PIP2) install -U neovim --user
-#
-#$(PY3NVIM_TARGET):
-#	export PYTHONUSERBASE=$(PREFIX) && \
-#		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
-#		$(PIP3) install -U neovim --user
+# -- python client
+$(PYNVIM_TARGET):
+	export PYTHONUSERBASE=$(PREFIX) && \
+		export PYTHONPATH=$(PREFIX)/lib:$(PYTHONPATH) && \
+		$(PIP) install -U neovim --user
 
 # -- nvim
 $(NVIM_DIR)/Makefile:
