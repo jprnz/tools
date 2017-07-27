@@ -27,15 +27,14 @@ Makefiles for all tools are located in `src/<tool>.mk`.
 # Notes
 ## Pip executable
 In order to provide the python client library for neovim the variables
-`PIP2` and `PIP3` must be defined. By default these are:
+`PIP` must be defined. By default these are:
 ``` Makefile
-PIP2 = pip2.7
-PIP3 = pip3.6
+PIP = pip3.6
 ```
 
 To change these at runtime use
 ``` Makefile
-make PIP2=<executable> PIP3=<executable>
+make PIP=<executable>
 ```
 
 
