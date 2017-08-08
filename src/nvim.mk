@@ -3,7 +3,7 @@ PIP = pip3.6
 
 # Autotools 
 AUTOCONF_URL = https://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
-AUTOCONF_DIR = autoconf
+AUTOCONF_DIR = $(BUILD)/autoconf
 AUTOCONF_TARGET = $(AUTOCONF_DIR)/bin/autoconf
 
 # Nvim python client
@@ -11,7 +11,7 @@ PYNVIM_TARGET = $(wildcard $(PREFIX)/lib/python*/site-packages/neovim)
 
 # Git repository URL for nvim
 NVIM_GIT = https://github.com/neovim/neovim.git
-NVIM_DIR = nvim-git
+NVIM_DIR = $(BUILD)/nvim-git
 NVIM_TARGET = $(PREFIX)/bin/nvim
 NVIM_DEPS = $(AUTOCONF_TARGET) #$(PY2NVIM_TARGET) $(PY3NVIM_TARGET)
 

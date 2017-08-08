@@ -1,16 +1,16 @@
 # PCRE Requirements
 PCRE_URL = ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.41.tar.gz
-PCRE_DIR = pcre_src
+PCRE_DIR = $(BUILD)/pcre-src
 PCRE_TARGET = $(PREFIX)/lib/libpcre.so
 
 # LZMA
 XZ_URL = https://tukaani.org/xz/xz-5.2.3.tar.gz
-XZ_DIR = xz_src
+XZ_DIR = $(BUILD)/xz-src
 XZ_TARGET = $(PREFIX)/lib/liblzma.so
 
 # Git repository URL for ag
 AG_GIT = https://github.com/ggreer/the_silver_searcher.git
-AG_DIR = ag-git
+AG_DIR = $(BUILD)/ag-git
 AG_TARGET = $(PREFIX)/bin/ag
 AG_DEPS = $(PCRE_TARGET) $(XZ_TARGET)
 
