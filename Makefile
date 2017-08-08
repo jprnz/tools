@@ -15,7 +15,5 @@ all: \
 clean:
 	git clean -xdff $(PWD)
 
-include src/tmux.mk
-include src/ag.mk
-#include src/nvim.mk
+include $(wildcard src/*.mk)
 

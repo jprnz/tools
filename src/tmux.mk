@@ -10,14 +10,15 @@ $(TMUX_DIR)/autogen.sh:
 	git clone $(TMUX_GIT) $(TMUX_DIR)
 
 $(TMUX_DIR)/configure: $(TMUX_DIR)/autogen.sh
-	cd $(TMUX_DIR) && ./autogen.sh
+	cd $(TMUX_DIR) && ./autogen.sh && touch $@
 
 $(TMUX_DIR)/Makefile: $(TMUX_DIR)/configure $(TMUX_DEPS)
 	cd $(TMUX_DIR) && ./configure \
 		CFLAGS="-I$(PREFIX)/include -I$(PREFIX)/include/ncurses" \
 		LDFLAGS="-L$(PREFIX)/lib -L$(PREFIX)/include/ncurses -L$(PREFIX)/include" \
 		CPPFLAGS="-I$(PREFIX)/include -I$(PREFIX)/include/ncurses" \
-		LDFLAGS="-L$(PREFIX)/include -L$(PREFIX)/include/ncurses -L$(PREFIX)/lib"
+		LDFLAGS="-L$(PREFIX)/include -L$(PREFIX)/include/ncurses -L$(PREFIX)/lib" 
+	touch $@
 
 $(TMUX_DIR)/tmux: $(TMUX_DIR)/Makefile
 	cd $(TMUX_DIR) && $(MAKE)
