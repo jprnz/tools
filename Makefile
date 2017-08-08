@@ -5,12 +5,12 @@ PREFIX = $(HOME)/local
 DOWNLOADS = $(PWD)/downloads
 
 .PHONY: all
-all: tmux-install
+all: tmux-install ag-install
 
 .PHONY: clean
 clean:
 	git clean -xdff $(PWD)
 
 include src/tmux.mk
-include src/nvim.mk
+include src/ag.mk
 
