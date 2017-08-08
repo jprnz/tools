@@ -1,7 +1,7 @@
 # Download or update and install various tools
 
 # Global prefix and directories
-PREFIX = $(PWD)/test
+PREFIX = $(HOME)/local
 BUILD = $(PWD)/build
 DOWNLOADS = $(BUILD)/downloads
 
