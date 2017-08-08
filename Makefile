@@ -9,6 +9,7 @@ DOWNLOADS = $(BUILD)/downloads
 all: \
 	tmux-install \
 	ag-install \
+	ctags-install \
 	#nvim-install 
 
 .PHONY: clean
